@@ -33,10 +33,11 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -69,45 +70,52 @@
 		<AndroidSigningStorePass>testtest</AndroidSigningStorePass>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationId>com.MiMMInf.ktitstimetableapp</ApplicationId>
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
-	  <ApplicationTitle>Звонки в МЦК-КТИТС</ApplicationTitle>
+	  <ApplicationId>com.MiMMInf.ktitstimetableappTesting</ApplicationId>
+	  <ApplicationVersion>5</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
+	  <ApplicationTitle>TTTEST</ApplicationTitle>
+	  <ApplicationIdGuid>0dc202c7-081b-4a36-8b99-45bba1589738</ApplicationIdGuid>
 	</PropertyGroup>
 </Project>

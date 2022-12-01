@@ -14,11 +14,17 @@ namespace KTITSTimetableApp
         {
             get
             {
-                var mbNow = Calls.Where(i => i.TotalDays > DateTime.Now.TimeOfDay.TotalDays);                
+                var mbNow = Calls.Where(i => i.TotalDays > DateTime.Now.TimeOfDay.TotalDays);
                 if (mbNow.Count() == 0)
                     return Calls.First();
                 else return mbNow.First();
             }
+        }
+        public static Lesson[] Today;
+        public static void UpdateTT()
+        {
+            var i = (int)DateTime.Today.DayOfWeek;
+            Today = TT[i - 2];
         }
         public static TimeSpan LastTime
         {
