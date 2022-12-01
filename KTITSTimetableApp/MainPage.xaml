@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KTITSTimetableApp.MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="10"
+            Padding="30,0"
+            VerticalOptions="Start">
+            <Label FontSize="25" Text="Текущее время"/>
+            <Label FontSize="25" x:Name="NowTimeLb"/>
+            <Label FontSize="25" Text="Следующее время"/>
+            <Label FontSize="25" x:Name="NextTimeLb"/>
+            <Label FontSize="25" Text="Прошлое время"/>
+            <Label FontSize="25" x:Name="LastTimeLb"/>
+            <Label FontSize="25" Text="Осталось до конца"/>
+            <Label FontSize="25" x:Name="EndTimeLb"/>
+            <Grid HorizontalOptions="Fill" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <ProgressBar x:Name="TotalProgressView"/>
+                <Label x:Name="TotalProgressProcent" HorizontalOptions="End" Grid.Column="1" FontSize="15"/>
+            </Grid>
+            <VerticalStackLayout x:Name="LastMinSL" IsVisible="false">
+                <Label FontSize="25" Text="Последняя минута"/>
+                <ProgressBar x:Name="LastMinView" ProgressColor="Yellow" ScaleY="3"/>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
