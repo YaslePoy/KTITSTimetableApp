@@ -33,60 +33,71 @@ public partial class MainPage : ContentPage
 
     private void LoadTT()
     {
-        int callId = 0;
-        foreach (var lesson in Utils.Today)
+        for (int i = 0; i < Utils.Today.Length * 2; i++)
         {
-            LessonsViewer.Add(new Label() { Text = Utils.Calls[callId++].ToString().Substring(0, 5) });
+            LessonsViewer.Add(new Label() { Text = Utils.Calls[i].ToString().Substring(0, 5) });
             Grid grid = new Grid();
+            BoxView bv = new BoxView() { Color = Brush.Blue.Color, CornerRadius = new CornerRadius(10) };
+            Grid.SetRowSpan(bv, 2);
+            grid.Add(bv);
             grid.RowDefinitions.Add(new RowDefinition());
-            grid.RowDefinitions.Add( new RowDefinition(45));
+            grid.RowDefinitions.Add(new RowDefinition(0));
+            Grid hiddble = new Grid() { IsVisible = false};
+            hiddble.RowDefinitions.Add(new RowDefinition());
+            hiddble.RowDefinitions.Add(new RowDefinition());
+            Grid localTimeGrid = new Grid();
+            localTimeGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            localTimeGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            localTimeGrid.Add(new Label() { Text = "До конца", Margin = new Thickness(10, 0), Background = Brush.Red.Color });
+            Label diff = new Label() { Text = "11:11:11.1"};
+            Grid.SetColumn(diff, 1);
+            localTimeGrid.Add(diff);
             Grid localProgressGrid = new Grid();
             localProgressGrid.ColumnDefinitions.Add(new ColumnDefinition());
             localProgressGrid.ColumnDefinitions.Add(new ColumnDefinition(60));
-            ProgressBar pbTotal = new ProgressBar();
-            Label procentLB = new Label() { Text = "12.34%"};
-            ProgressBar pbMinute = new ProgressBar() { ScaleY = 3, ProgressColor = Brush.Orange.Color };
+            ProgressBar pbTotal = new ProgressBar() { Margin = new Thickness(10, 0) };
+            Label procentLB = new Label() { FontSize = 15, Text = "12.34%" };
+            ProgressBar pbMinute = new ProgressBar() { ScaleY = 3, Margin = new Thickness(10, 0), ProgressColor = Brush.Orange.Color };
             localProgressGrid.Add(pbTotal);
             localProgressGrid.Add(procentLB);
             localProgressGrid.Add(pbMinute);
             Grid.SetColumn(procentLB, 1);
             Grid.SetColumnSpan(pbMinute, 2);
-            grid.Add(localProgressGrid);
+            hiddble.Add(localProgressGrid);
+            hiddble.Add(localTimeGrid);
             Grid.SetRow(localProgressGrid, 1);
-            BoxView bv = new BoxView() { HeightRequest = 150, Color = Color.FromRgb(0, 0, 255), CornerRadius = new CornerRadius(10) };
-            grid.Add(bv);
-            if (lesson is null)
+            grid.Add(hiddble);
+            Grid.SetRow(hiddble, 1);
+            if (i % 2 == 1)
             {
-                bv.HeightRequest = 50;
-                Label lb = new Label() { Text = "Нет пары", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, FontSize = 25 };
+                Label lb = new Label() { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, FontSize = 25, Padding = 3 };
+                lb.Text = $"Перемена {(Utils.Calls[i + 1] - Utils.Calls[i]).Minutes} минут";
                 grid.Add(lb);
             }
             else
             {
-                VerticalStackLayout st = new VerticalStackLayout() { HorizontalOptions = LayoutOptions.FillAndExpand, Spacing = 5 };
-                Label lbL = new Label() { Text = lesson.LessonName, Margin = new Thickness(17, 0), FontSize = 25 };
-                Label lbN = new Label() { Text = lesson.ClassNo.ToString(), Margin = new Thickness(17, 0), FontSize = 25 };
-                Label lbT = new Label() { Text = lesson.TeacherName, Margin = new Thickness(17, 0), FontSize = 25 };
-                st.Add(lbL);
-                st.Add(lbN);
-                st.Add(lbT);
-                grid.Add(st);
+                Lesson lesson = Utils.Today[i / 2];
+                if (lesson == null)
+                {
+                    Label lb = new Label() { Text = "Нет пары", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, FontSize = 25, Padding = 3 };
+                    grid.Add(lb);
+                }
+                else
+                {
+                    VerticalStackLayout st = new VerticalStackLayout() { HorizontalOptions = LayoutOptions.FillAndExpand, Spacing = 5 };
+                    Label lbL = new Label() { Text = lesson.LessonName, Margin = new Thickness(17, 0), FontSize = 25 };
+                    Label lbN = new Label() { Text = lesson.ClassNo.ToString(), Margin = new Thickness(17, 0), FontSize = 25 };
+                    Label lbT = new Label() { Text = lesson.TeacherName, Margin = new Thickness(17, 0), FontSize = 25 };
+                    st.Add(lbL);
+                    st.Add(lbN);
+                    st.Add(lbT);
+                    grid.Add(st);
+                }
+
             }
             LessonsViewer.Add(grid);
-            LessonsViewer.Add(new Label() { Text = Utils.Calls[callId++].ToString().Substring(0, 5) });
-            Grid recess = new Grid();
-            BoxView recBV = new BoxView() { HeightRequest = 50, Color = Color.FromRgb(0, 0, 255), CornerRadius = new CornerRadius(10) };
-            recess.Add(recBV);
-            Label theEnd = new Label() { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, FontSize = 25 };
-            if (Utils.Today.Last() == lesson)
-                theEnd.Text = "End of hell";
-            else
-                theEnd.Text = $"Перемена {(Utils.Calls[callId] - Utils.Calls[callId - 1]).Minutes} минут";
-            recess.Add(theEnd);
-            LessonsViewer.Add(recess);
         }
     }
-
     private bool Timer_Elapsed()
     {
         Dispatcher.Dispatch(() =>
@@ -102,7 +113,7 @@ public partial class MainPage : ContentPage
     }
     public void ColdMode()
     {
-        
+
     }
 
 }

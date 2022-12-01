@@ -5,7 +5,7 @@
 
     <Grid Margin="7">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="65"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <VerticalStackLayout Margin="10, 0" Spacing="2">
@@ -19,7 +19,6 @@
             x:Name="LessonsViewer">
             </VerticalStackLayout>
         </ScrollView>
-
     </Grid>
 
 </ContentPage>
