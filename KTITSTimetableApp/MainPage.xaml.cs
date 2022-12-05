@@ -37,52 +37,7 @@ public partial class MainPage : ContentPage
         for (int i = start; i < Utils.Today.Length * 2; i++)
         {
             LessonsViewer.Add(new Label() { Text = Utils.Calls[i].ToString().Substring(0, 5) });
-            Grid grid = new Grid() { BindingContext = new List<TimeSpan>() { Utils.Calls[i], Utils.Calls[i + 1] } };
-            BoxView bv = new BoxView()
-            {
-                Color = Brush.Blue.Color,
-                CornerRadius = new CornerRadius(10)
-            };
-            Grid.SetRowSpan(bv, 2);
-            grid.Add(bv);
-            grid.RowDefinitions.Add(new RowDefinition());
-            grid.RowDefinitions.Add(new RowDefinition(0));
-            Grid hiddble = new Grid() { IsVisible = false };
-            hiddble.RowDefinitions.Add(new RowDefinition());
-            hiddble.RowDefinitions.Add(new RowDefinition());
-            Grid localTimeGrid = new Grid();
-            localTimeGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            localTimeGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            localTimeGrid.Add(new Label()
-            {
-                Text = "До конца",
-                Margin = new Thickness(10, 0),
-            });
-            Label diff = new Label() { Text = "11:11:11.1" };
-            Grid.SetColumn(diff, 1);
-            localTimeGrid.Add(diff);
-            Grid localProgressGrid = new Grid();
-            localProgressGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            localProgressGrid.ColumnDefinitions.Add(new ColumnDefinition(60));
-            ProgressBar pbTotal = new ProgressBar() { Margin = new Thickness(10, 0) };
-            Label procentLB = new Label() { FontSize = 15, Text = "12.34%" };
-            ProgressBar pbMinute = new ProgressBar()
-            {
-                ScaleY = 3,
-                Margin = new Thickness(10, 0),
-                ProgressColor = Brush.Orange.Color,
-                IsVisible = false
-            };
-            localProgressGrid.Add(pbTotal);
-            localProgressGrid.Add(procentLB);
-            localProgressGrid.Add(pbMinute);
-            Grid.SetColumn(procentLB, 1);
-            Grid.SetColumnSpan(pbMinute, 2);
-            hiddble.Add(localProgressGrid);
-            hiddble.Add(localTimeGrid);
-            Grid.SetRow(localProgressGrid, 1);
-            grid.Add(hiddble);
-            Grid.SetRow(hiddble, 1);
+            IView adding;
             if (i % 2 == 1)
             {
                 if (i != Utils.Today.Length * 2 - 1)
@@ -95,7 +50,7 @@ public partial class MainPage : ContentPage
                         Padding = 3
                     };
                     lb.Text = $"Перемена {(Utils.Calls[i + 1] - Utils.Calls[i]).Minutes} минут";
-                    grid.Add(lb);
+                    adding = lb;
                 }
                 else
                 {
@@ -107,7 +62,7 @@ public partial class MainPage : ContentPage
                         Padding = 3
                     };
                     lb.Text = $"Домооооой!";
-                    grid.Add(lb);
+                    adding = lb;
                 }
 
             }
@@ -124,7 +79,7 @@ public partial class MainPage : ContentPage
                         FontSize = 25,
                         Padding = 3
                     };
-                    grid.Add(lb);
+                    adding = lb;
                 }
                 else
                 {
@@ -151,61 +106,15 @@ public partial class MainPage : ContentPage
                     st.Add(lbL);
                     st.Add(lbN);
                     st.Add(lbT);
-                    grid.Add(st);
+                    adding = st;
                 }
 
             }
-            LessonsViewer.Add(grid);
+            LessonsViewer.Add(NewTimeBlock(Utils.Calls[i], Utils.Calls[i + 1], adding));
         }
         if(LessonsViewer.Children.Count() == 0)
         {
             LessonsViewer.Add(new Label() { Text = Utils.Calls[Utils.Today.Count() * 2 - 1].ToString().Substring(0, 5) });
-            Grid grid = new Grid() { BindingContext = new List<TimeSpan>() { Utils.Calls[Utils.Today.Count() * 2 - 1], Utils.Calls[0] } };
-            BoxView bv = new BoxView()
-            {
-                Color = Brush.Blue.Color,
-                CornerRadius = new CornerRadius(10)
-            };
-            Grid.SetRowSpan(bv, 2);
-            grid.Add(bv);
-            grid.RowDefinitions.Add(new RowDefinition());
-            grid.RowDefinitions.Add(new RowDefinition(0));
-            Grid hiddble = new Grid() { IsVisible = false };
-            hiddble.RowDefinitions.Add(new RowDefinition());
-            hiddble.RowDefinitions.Add(new RowDefinition());
-            Grid localTimeGrid = new Grid();
-            localTimeGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            localTimeGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            localTimeGrid.Add(new Label()
-            {
-                Text = "До конца",
-                Margin = new Thickness(10, 0),
-            });
-            Label diff = new Label() { Text = "11:11:11.1" };
-            Grid.SetColumn(diff, 1);
-            localTimeGrid.Add(diff);
-            Grid localProgressGrid = new Grid();
-            localProgressGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            localProgressGrid.ColumnDefinitions.Add(new ColumnDefinition(60));
-            ProgressBar pbTotal = new ProgressBar() { Margin = new Thickness(10, 0) };
-            Label procentLB = new Label() { FontSize = 15, Text = "12.34%" };
-            ProgressBar pbMinute = new ProgressBar()
-            {
-                ScaleY = 3,
-                Margin = new Thickness(10, 0),
-                ProgressColor = Brush.Orange.Color,
-                IsVisible = false
-            };
-            localProgressGrid.Add(pbTotal);
-            localProgressGrid.Add(procentLB);
-            localProgressGrid.Add(pbMinute);
-            Grid.SetColumn(procentLB, 1);
-            Grid.SetColumnSpan(pbMinute, 2);
-            hiddble.Add(localProgressGrid);
-            hiddble.Add(localTimeGrid);
-            Grid.SetRow(localProgressGrid, 1);
-            grid.Add(hiddble);
-            Grid.SetRow(hiddble, 1);
             Label lb = new Label()
             {
                 HorizontalOptions = LayoutOptions.Center,
@@ -214,8 +123,7 @@ public partial class MainPage : ContentPage
                 Padding = 3
             };
             lb.Text = $"Домооооой!";
-            grid.Add(lb);
-            LessonsViewer.Add(grid);
+            LessonsViewer.Add(NewTimeBlock(Utils.Calls[Utils.Today.Count() * 2 - 1], Utils.Calls[0], lb));
         }
         else
         {
@@ -269,7 +177,7 @@ public partial class MainPage : ContentPage
     }
     public Grid NewTimeBlock(TimeSpan start, TimeSpan end, IView content)
     {
-        Grid grid = new Grid() { BindingContext = new List<TimeSpan>() { Utils.Calls[Utils.Today.Count() * 2 - 1], Utils.Calls[0] } };
+        Grid grid = new Grid() { BindingContext = new List<TimeSpan>() { start, end } };
         BoxView bv = new BoxView()
         {
             Color = Brush.Blue.Color,
