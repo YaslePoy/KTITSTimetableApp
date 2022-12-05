@@ -12,7 +12,7 @@
             <Label FontSize="12" Text="Текущее время"/>
             <Label FontSize="35" x:Name="NowTimeLb"/>
         </VerticalStackLayout>
-        <ScrollView VerticalOptions="CenterAndExpand" Orientation="Vertical" Grid.Row="1">
+        <ScrollView VerticalOptions="StartAndExpand"  Orientation="Vertical" Grid.Row="1">
             <VerticalStackLayout
             Spacing="5"
             Padding="10,0"

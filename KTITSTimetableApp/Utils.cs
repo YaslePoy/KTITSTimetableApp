@@ -24,7 +24,7 @@ namespace KTITSTimetableApp
         public static void UpdateTT()
         {
             var i = (int)DateTime.Today.DayOfWeek;
-            Today = TT[i - 2];
+            Today = TT[i - 1];
         }
         public static TimeSpan LastTime
         {
